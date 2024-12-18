@@ -1,0 +1,169 @@
+# On UCSF servers first load GATE
+# module load gate9.2
+
+#=====================================================
+# MATERIALS
+#=====================================================
+/gate/geometry/setMaterialDatabase GateMaterials.db
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+/control/execute C4_12heads.mac
+#/control/execute C4_1head.mac
+
+#/control/execute Derenzo_hotrods_benchmark_slice.mac
+/control/execute NEMA_IQ_2001.mac
+
+#/gate/SPECThead/attachPhantomSD
+#/gate/collimator/attachPhantomSD
+
+#=====================================================
+# PHYSICS 
+#=====================================================
+/gate/physics/addPhysicsList emstandard_opt4
+#/gate/physics/addProcess RadioactiveDecay
+#/gate/physics/removeProcess Compton # This does not work for some reason
+
+#/gate/physics/processList Enabled
+#/gate/physics/processList Initialized
+
+
+#=====================================================
+# CUTS
+# G4 has a default production cut of 0.7 mm, so it does
+# not simulate particles that do not travel at least this
+# distance. To simulate characteristic x-rays and get the
+# PDG codes right, we need to set the production cut to a
+# lower value.
+# 
+# https://agenda.infn.it/event/11278/sessions/1288/attachments/5725/6381/particles-processes-cuts.pdf
+#
+#=====================================================
+/run/setCut 0.01 mm
+#/run/setCut 0.1 mm
+
+#/gate/physics/Gamma/SetCutInRegion      world  10 km
+#/gate/physics/Electron/SetCutInRegion   world  10 km
+#/gate/physics/Positron/SetCutInRegion   world  10 km
+#/gate/physics/SetMaxStepSizeInRegion    MainBox 10 km
+
+/gate/physics/displayCuts
+
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+/gate/run/initialize
+
+### Inactivate physics processes
+#/process/inactivate phot
+#/process/inactivate compt
+#/process/inactivate Rayl
+
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+/vis/disable
+#/control/execute Vis_OGL.mac
+#/control/execute Vis_raytracer.mac
+#/control/execute Vis_heprep.mac
+#/control/execute Visualization_traj.mac
+
+#=====================================================
+# SOURCE
+#=====================================================
+/control/execute GenerateSingleGamma.mac
+#/control/execute Generate511s.mac
+#/control/execute GenerateDerenzoHotrod511s.mac
+#/control/execute GenerateNEMAIQ.mac
+
+#=====================================================
+# DIGITIZE
+#=====================================================
+/gate/digitizer/Singles/insert adder
+/gate/digitizer/Singles/insert readout
+#/gate/digitizer/Singles/readout/setPolicy TakeEnergyCentroid
+/gate/digitizer/Singles/readout/setPolicy TakeEnergyWinner
+/gate/digitizer/Singles/readout/setDepth 1
+#/gate/digitizer/Coincidences/setWindow 10. ns
+
+
+#=====================================================
+# SMEAR
+#=====================================================
+#/gate/digitizer/Singles/insert blurring
+#/gate/digitizer/Singles/blurring/setResolution 0.10
+#/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
+
+#/gate/digitizer/name WindowLow
+#/gate/digitizer/insert singleChain
+#/gate/digitizer/WindowLow/setInputName			Singles
+#/gate/digitizer/WindowLow/insert			thresholder
+#/gate/digitizer/WindowLow/thresholder/setThreshold 	122 keV     # 9 keV
+#/gate/digitizer/WindowLow/insert 			upholder
+#/gate/digitizer/WindowLow/upholder/setUphold 		131. keV
+
+
+#=====================================================
+# THRESHOLDS
+#=====================================================
+#/gate/digitizer/Singles/insert thresholder
+#/gate/digitizer/Singles/thresholder/setThreshold 30. keV
+#/gate/digitizer/Singles/insert upholder
+#/gate/digitizer/Singles/upholder/setUphold 650. keV
+
+#/gate/digitizer/name WindowMain
+#/gate/digitizer/insert singleChain
+#/gate/digitizer/WindowMain/setInputName		Singles
+#/gate/digitizer/WindowMain/insert 			thresholder
+#/gate/digitizer/WindowMain/thresholder/setThreshold 	132. keV    # energy window 13%
+#/gate/digitizer/WindowMain/insert 			upholder
+#/gate/digitizer/WindowMain/upholder/setUphold 		150. keV
+
+
+#=====================================================
+# DEFINE OUTPUT
+#=====================================================
+/gate/output/root/enable
+#/gate/output/root/setFileName {outfilename}   #Cmd prompt parameter
+/gate/output/root/setFileName PET
+
+/gate/output/root/setRootHitFlag            0
+/gate/output/root/setRootSinglesFlag        1
+#/gate/output/root/setRootCoincidencesFlag   0
+/gate/output/root/setRootNtupleFlag         0
+
+#/gate/output/root/setOutFileSinglesAdderFlag         0
+#/gate/output/root/setOutFileSinglesReadoutFlag       0
+#/gate/output/root/setOutFileSinglesSpblurringFlag    0
+#/gate/output/root/setOutFileSinglesBlurringFlag      0
+#/gate/output/root/setOutFileSinglesThresholderFlag   0
+#/gate/output/root/setOutFileSinglesUpholderFlag      0
+
+
+# P R O J E C T I O N
+#####
+#/gate/output/projection/enable
+#/gate/output/projection/setFileName rotationHot_112-80-144
+#/gate/output/projection/pixelSizeX 1.6 mm
+#/gate/output/projection/pixelSizeY 1.6 mm
+#/gate/output/projection/pixelNumberX 112
+#/gate/output/projection/pixelNumberY 80
+
+# Specify the projection plane (XY, YZ or ZX)
+##
+#/gate/output/projection/projectionPlane YZ
+
+#/gate/output/projection/setInputDataName	WindowLow
+#/gate/output/projection/addInputDataName	WindowMain
+
+
+#=====================================================
+# START ACQUISITION
+#=====================================================
+#/control/execute StartNEventsAcquisition.mac
+/control/execute StartTimedAcquisition.mac
+
+#exit

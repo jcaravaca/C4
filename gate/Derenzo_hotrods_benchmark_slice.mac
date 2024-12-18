@@ -1,0 +1,125 @@
+###
+# Deluxe Jaszczak Phantom Model ECCT/DLX/P
+# For use with medium to high spatial resolution SPECT and PET systems
+# Cylinder inside diameter : 21.6 cm
+# Height of rods : 1 mm
+# Rod diameters : 9.5, 11.1, 12.7, 15.9, 19.1, and 25.4 mm
+
+# 04/09/19
+###
+
+
+#################
+# P H A N T O M #
+#################
+/gate/world/daughters/name IPhantom
+/gate/world/daughters/insert cylinder
+/gate/IPhantom/geometry/setRmax 108 mm # 216 mm
+/gate/IPhantom/geometry/setRmin 0. mm
+/gate/IPhantom/geometry/setHeight 1 mm
+/gate/IPhantom/placement/setTranslation 0. 0. 0. mm
+/gate/IPhantom/setMaterial Polyethylene
+/gate/IPhantom/vis/setColor blue
+/gate/IPhantom/vis/forceWireframe
+/gate/IPhantom/attachPhantomSD
+
+##############
+# R O D part #
+##############
+
+/gate/IPhantom/daughters/name rods1
+/gate/IPhantom/daughters/insert cylinder
+/gate/rods1/geometry/setRmax 12.7  mm 	# 25.4 mm
+/gate/rods1/geometry/setRmin 0. mm
+/gate/rods1/geometry/setHeight 1 mm
+/gate/rods1/placement/setTranslation 0. 36.7 0. mm
+/gate/rods1/placement/setPhiOfTranslation 150. deg
+/gate/rods1/setMaterial Water
+/gate/rods1/vis/setColor red
+/gate/rods1/repeaters/insert quadrant
+/gate/rods1/quadrant/setCopySpacing 50.8 mm
+/gate/rods1/quadrant/setOrientation 150. deg
+/gate/rods1/quadrant/setLineNumber 2
+/gate/rods1/quadrant/setMaxRange 90. mm
+/gate/rods1/attachPhantomSD
+
+/gate/IPhantom/daughters/name rods2
+/gate/IPhantom/daughters/insert cylinder
+/gate/rods2/geometry/setRmax 9.55  mm   # 19.1 mm
+/gate/rods2/geometry/setRmin 0. mm
+/gate/rods2/geometry/setHeight 1 mm
+/gate/rods2/placement/setTranslation 0. 29.0 0. mm
+/gate/rods2/placement/setPhiOfTranslation 210. deg
+/gate/rods2/setMaterial Water
+/gate/rods2/vis/setColor red
+/gate/rods2/repeaters/insert quadrant
+/gate/rods2/quadrant/setCopySpacing 38.2 mm
+/gate/rods2/quadrant/setOrientation 210. deg
+/gate/rods2/quadrant/setLineNumber 2
+/gate/rods2/quadrant/setMaxRange 90. mm
+/gate/rods2/attachPhantomSD
+
+/gate/IPhantom/daughters/name rods3
+/gate/IPhantom/daughters/insert cylinder
+/gate/rods3/geometry/setRmax 7.95  mm  # 15.9 mm
+/gate/rods3/geometry/setRmin 0. mm
+/gate/rods3/geometry/setHeight 1 mm
+/gate/rods3/placement/setTranslation 0. 32.9 0. mm
+/gate/rods3/placement/setPhiOfTranslation 270. deg
+/gate/rods3/setMaterial Water
+/gate/rods3/vis/setColor red
+/gate/rods3/repeaters/insert quadrant
+/gate/rods3/quadrant/setCopySpacing 31.8 mm
+/gate/rods3/quadrant/setOrientation 270. deg
+/gate/rods3/quadrant/setLineNumber 3
+/gate/rods3/quadrant/setMaxRange 90. mm
+/gate/rods3/attachPhantomSD
+
+
+/gate/IPhantom/daughters/name rods4
+/gate/IPhantom/daughters/insert cylinder
+/gate/rods4/geometry/setRmax 6.35  mm  # 12.7 mm
+/gate/rods4/geometry/setRmin 0. mm
+/gate/rods4/geometry/setHeight 1 mm
+/gate/rods4/placement/setTranslation 0. 22. 0. mm
+/gate/rods4/placement/setPhiOfTranslation 330. deg
+/gate/rods4/setMaterial Water
+/gate/rods4/vis/setColor red
+/gate/rods4/repeaters/insert quadrant
+/gate/rods4/quadrant/setCopySpacing 25.4 mm
+/gate/rods4/quadrant/setOrientation 330. deg
+/gate/rods4/quadrant/setLineNumber 4
+/gate/rods4/quadrant/setMaxRange 90. mm
+/gate/rods4/attachPhantomSD
+
+/gate/IPhantom/daughters/name rods5
+/gate/IPhantom/daughters/insert cylinder
+/gate/rods5/geometry/setRmax 5.55  mm  # 11.1 mm
+/gate/rods5/geometry/setRmin 0. mm
+/gate/rods5/geometry/setHeight 1 mm
+/gate/rods5/placement/setTranslation 0. 35. 0. mm
+/gate/rods5/placement/setPhiOfTranslation 30. deg
+/gate/rods5/setMaterial Water
+/gate/rods5/vis/setColor red
+/gate/rods5/repeaters/insert quadrant
+/gate/rods5/quadrant/setCopySpacing 22.2 mm
+/gate/rods5/quadrant/setOrientation 30. deg
+/gate/rods5/quadrant/setLineNumber 4
+/gate/rods5/quadrant/setMaxRange 90. mm
+/gate/rods5/attachPhantomSD
+
+/gate/IPhantom/daughters/name rods6
+/gate/IPhantom/daughters/insert cylinder
+/gate/rods6/geometry/setRmax 4.75  mm  # 9.5 mm
+/gate/rods6/geometry/setRmin 0. mm
+/gate/rods6/geometry/setHeight 1 mm
+/gate/rods6/placement/setTranslation 0. 26. 0. mm
+/gate/rods6/placement/setPhiOfTranslation 90. deg
+/gate/rods6/setMaterial Water
+/gate/rods6/vis/setColor red
+/gate/rods6/repeaters/insert quadrant
+/gate/rods6/quadrant/setCopySpacing 19 mm
+/gate/rods6/quadrant/setOrientation 90. deg
+/gate/rods6/quadrant/setLineNumber 5
+/gate/rods6/quadrant/setMaxRange 90. mm
+/gate/rods6/attachPhantomSD

@@ -1,0 +1,10 @@
+#/tracking/FillPointCont true
+
+/vis/open HepRepFile
+/vis/heprep/setFileDir /global/home/users/jcaravacarodriguez/projects/C4/gate/heprep/
+/vis/scene/create
+/vis/scene/add/volume
+/vis/sceneHandler/attach
+/vis/viewer/set/style s
+/vis/scene/add/trajectories
+/vis/viewer/flush

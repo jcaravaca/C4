@@ -1,0 +1,9 @@
+#/gate/application/setTimeSlice    1. s
+/gate/application/setTimeStart     0.  s
+/gate/application/setTimeStop      1.0 s
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/random/verbose 1
+/gate/application/start
+
