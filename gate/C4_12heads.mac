@@ -9,7 +9,7 @@
 /gate/world/daughters/insert box
 /gate/SPECThead/geometry/setXLength   64.0 mm
 /gate/SPECThead/geometry/setYLength   64.0 mm
-/gate/SPECThead/geometry/setZLength  196.0 mm
+/gate/SPECThead/geometry/setZLength  194.0 mm
 /gate/SPECThead/placement/setTranslation  0. 245.25 0. mm
 #/gate/SPECThead/placement/setRotationAxis 0 0 1
 #/gate/SPECThead/placement/setRotationAngle 42.5 deg
@@ -28,11 +28,28 @@
 /gate/SPECThead/daughters/insert box
 /gate/crystal/geometry/setXLength   44.0 mm
 /gate/crystal/geometry/setYLength   10.0 mm
-/gate/crystal/geometry/setZLength  176.0 mm
+/gate/crystal/geometry/setZLength  177.0 mm
 /gate/crystal/placement/setTranslation  0.0 -3.0 0. mm
 /gate/crystal/setMaterial CZT
 /gate/crystal/vis/setColor yellow
 /gate/crystal/vis/forceWireframe
+
+
+## PIXEL
+/gate/crystal/daughters/name pixel
+/gate/crystal/daughters/insert box
+/gate/pixel/geometry/setXLength   1.0 mm
+/gate/pixel/geometry/setYLength   0.5 mm
+/gate/pixel/geometry/setZLength   1.0 mm
+/gate/pixel/placement/setTranslation  0.0 0.0 0.0 mm
+/gate/pixel/setMaterial CZT
+/gate/pixel/vis/setColor yellow
+/gate/pixel/vis/forceWireframe
+/gate/pixel/repeaters/insert cubicArray
+/gate/pixel/cubicArray/setRepeatNumberX 44
+/gate/pixel/cubicArray/setRepeatNumberY 20
+/gate/pixel/cubicArray/setRepeatNumberZ 177
+/gate/pixel/cubicArray/setRepeatVector 1.0  0.5  1.0 mm
 
 
 ## COLLIMATOR
@@ -40,7 +57,7 @@
 /gate/SPECThead/daughters/insert box
 /gate/collimator/geometry/setXLength  44.0 mm
 /gate/collimator/geometry/setYLength  24.0 mm
-/gate/collimator/geometry/setZLength 176.0 mm
+/gate/collimator/geometry/setZLength 177.0 mm
 /gate/collimator/placement/setTranslation  0. -20. 0. mm
 /gate/collimator/setMaterial Tungsten
 /gate/collimator/vis/setColor red
@@ -59,13 +76,19 @@
 /gate/hole/repeaters/insert cubicArray
 /gate/hole/cubicArray/setRepeatNumberX 44
 /gate/hole/cubicArray/setRepeatNumberY 1
-/gate/hole/cubicArray/setRepeatNumberZ 176
+/gate/hole/cubicArray/setRepeatNumberZ 177
 /gate/hole/cubicArray/setRepeatVector 1.0  0.0  1.0 mm
 
+#/gate/systems/SPECThead/base/attach SPECThead
 /gate/systems/SPECThead/crystal/attach crystal
+/gate/systems/SPECThead/pixel/attach pixel
+
 /gate/crystal/attachCrystalSD
+/gate/pixel/attachCrystalSD
 
 /gate/collimator/attachPhantomSD
 /gate/hole/attachPhantomSD
+#/gate/SPECThead/attachPhantomSD
+
 /gate/systems/SPECThead/describe
 

@@ -12,11 +12,11 @@
 /control/execute C4_12heads.mac
 #/control/execute C4_1head.mac
 
+#=====================================================
+# PHANTOMS
+#=====================================================
 #/control/execute Derenzo_hotrods_benchmark_slice.mac
-/control/execute NEMA_IQ_2001.mac
-
-#/gate/SPECThead/attachPhantomSD
-#/gate/collimator/attachPhantomSD
+#/control/execute NEMA_IQ_2001.mac
 
 #=====================================================
 # PHYSICS 
@@ -74,10 +74,12 @@
 #=====================================================
 # SOURCE
 #=====================================================
-/control/execute GenerateSingleGamma.mac
+#/control/execute GeneratePointSource.mac
+/control/execute GenerateSphericalSource.mac
 #/control/execute Generate511s.mac
 #/control/execute GenerateDerenzoHotrod511s.mac
 #/control/execute GenerateNEMAIQ.mac
+/gate/source/list
 
 #=====================================================
 # DIGITIZE
@@ -128,7 +130,7 @@
 #=====================================================
 /gate/output/root/enable
 #/gate/output/root/setFileName {outfilename}   #Cmd prompt parameter
-/gate/output/root/setFileName PET
+/gate/output/root/setFileName SPECT
 
 /gate/output/root/setRootHitFlag            0
 /gate/output/root/setRootSinglesFlag        1
@@ -143,7 +145,9 @@
 #/gate/output/root/setOutFileSinglesUpholderFlag      0
 
 
-# P R O J E C T I O N
+#=====================================================
+# DETECTOR PROJECTIONS (Not used)
+#=====================================================
 #####
 #/gate/output/projection/enable
 #/gate/output/projection/setFileName rotationHot_112-80-144

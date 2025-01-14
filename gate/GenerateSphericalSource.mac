@@ -1,0 +1,22 @@
+#=====================================================
+# SOURCE
+#=====================================================
+/gate/source/addSource source_sphere
+/gate/source/source_sphere/setActivity 1. MBq
+/gate/source/source_sphere/gps/particle gamma
+
+/gate/source/source_sphere/gps/ene/type Mono
+/gate/source/source_sphere/gps/ene/mono 140.0 keV
+
+/gate/source/source_sphere/gps/pos/type Volume
+/gate/source/source_sphere/gps/pos/shape Sphere
+/gate/source/source_sphere/gps/pos/radius 1.0 mm
+/gate/source/source_sphere/gps/pos/centre 0. 0. 0. cm
+
+/gate/source/source_sphere/gps/ang/type iso
+
+#/gate/source/source_sphere/gps/mintheta 90. deg
+#/gate/source/source_sphere/gps/maxtheta 90. deg
+
+#/gate/source/source_sphere/gps/minphi 0. deg
+#/gate/source/source_sphere/gps/maxphi 360. deg
