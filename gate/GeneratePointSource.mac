@@ -3,7 +3,7 @@
 #=====================================================
 /gate/source/addSource source
 /gate/source/source/gps/particle   gamma
-/gate/source/source/gps/energy     140.0 keV
+/gate/source/source/gps/energy     218.0 keV
 /gate/source/source/gps/ang/type   iso
 
 #/gate/source/source/gps/direction 1 0 0
@@ -12,8 +12,8 @@
 #/gate/source/source/gps/ang/minphi 0. deg
 #/gate/source/source/gps/ang/maxphi 360. deg
 
-/gate/source/source/setActivity    10000. Bq
+/gate/source/source/setActivity    1. MBq
 /gate/source/source/setIntensity   1
 
-/gate/source/source/gps/pos/centre 30. 20. 0. cm
+/gate/source/source/gps/pos/centre 0.5 200.0 0.5 mm    # Hole center 13mm from collimator
 

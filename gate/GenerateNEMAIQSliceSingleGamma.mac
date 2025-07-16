@@ -1,0 +1,115 @@
+#  NEMA IEC 2001 IQ SOURCE GAMMA
+
+/gate/source/addSource                        warm
+/gate/source/warm/gps/pos/centre 0.0 -3.5 0.0 cm
+/gate/source/warm/gps/pos/type   Volume
+/gate/source/warm/gps/pos/shape  Cylinder
+/gate/source/warm/gps/pos/radius 14.7 cm
+/gate/source/warm/gps/pos/halfz  0.5 mm
+/gate/source/warm/gps/particle   gamma
+/gate/source/warm/gps/ene/type   Mono
+/gate/source/warm/gps/ene/mono   0.440 MeV
+/gate/source/warm/setActivity    982918 Bq # 20kBq/mL
+/gate/source/warm/gps/ang/type   iso
+/gate/source/warm/gps/Forbid world
+/gate/source/warm/gps/Forbid NEMA_IQ
+/gate/source/warm/gps/Forbid centercyl
+/gate/source/warm/gps/Forbid centercylin
+/gate/source/warm/gps/Forbid sphere10
+/gate/source/warm/gps/Forbid sphere13
+/gate/source/warm/gps/Forbid sphere17
+/gate/source/warm/gps/Forbid sphere22
+/gate/source/warm/gps/Forbid sphere28
+/gate/source/warm/gps/Forbid sphere37
+/gate/source/warm/gps/Forbid sphere10in
+/gate/source/warm/gps/Forbid sphere13in
+/gate/source/warm/gps/Forbid sphere17in
+/gate/source/warm/gps/Forbid sphere22in
+/gate/source/warm/gps/Forbid sphere28in
+/gate/source/warm/gps/Forbid sphere37in
+
+# 10 mm Sphere
+/gate/source/addSource sphere10mm             gps
+/gate/source/sphere10mm/gps/pos/centre        2.86 4.95367 0.0 cm
+/gate/source/sphere10mm/gps/pos/type          Volume
+/gate/source/sphere10mm/gps/pos/shape         Cylinder
+/gate/source/sphere10mm/gps/pos/radius        0.5 cm
+/gate/source/sphere10mm/gps/pos/halfz         0.5 mm
+/gate/source/sphere10mm/setActivity           12566.371 Bq
+/gate/source/sphere10mm/gps/particle          gamma
+/gate/source/sphere10mm/gps/ene/type          Mono
+/gate/source/sphere10mm/gps/ene/mono          0.440 MeV
+/gate/source/sphere10mm/gps/ang/type          iso
+/gate/source/sphere10mm/gps/pos/confine       sphere10in
+
+# 13 mm Sphere
+/gate/source/addSource sphere13mm             gps
+/gate/source/sphere13mm/gps/pos/centre        -2.86 4.95367 0.0 cm
+/gate/source/sphere13mm/gps/pos/type          Volume
+/gate/source/sphere13mm/gps/pos/shape         Cylinder
+/gate/source/sphere13mm/gps/pos/radius        0.65 cm
+/gate/source/sphere13mm/gps/pos/halfz         0.5 mm
+/gate/source/sphere13mm/setActivity           21237 Bq
+/gate/source/sphere13mm/gps/particle          gamma
+/gate/source/sphere13mm/gps/ene/type          Mono
+/gate/source/sphere13mm/gps/ene/mono          0.440 MeV
+/gate/source/sphere13mm/gps/ang/type          iso
+/gate/source/sphere13mm/gps/pos/confine       sphere13in
+
+# 17 mm Sphere
+/gate/source/addSource sphere17mm             gps
+/gate/source/sphere17mm/gps/pos/centre        -5.72 0. 0.0 cm
+/gate/source/sphere17mm/gps/pos/type          Volume
+/gate/source/sphere17mm/gps/pos/shape         Cylinder
+/gate/source/sphere17mm/gps/pos/radius        0.85 cm
+/gate/source/sphere17mm/gps/pos/halfz         0.5 mm
+/gate/source/sphere17mm/setActivity           36317 Bq
+/gate/source/sphere17mm/gps/particle          gamma
+/gate/source/sphere17mm/gps/ene/type          Mono
+/gate/source/sphere17mm/gps/ene/mono          0.440 MeV
+/gate/source/sphere17mm/gps/ang/type          iso
+/gate/source/sphere17mm/gps/pos/confine       sphere17in
+
+# 22 mm Sphere
+/gate/source/addSource sphere22mm             gps
+/gate/source/sphere22mm/gps/pos/centre        -2.86 -4.95367 0.0 cm
+/gate/source/sphere22mm/gps/pos/type          Volume
+/gate/source/sphere22mm/gps/pos/shape         Cylinder
+/gate/source/sphere22mm/gps/pos/radius        1.1 cm
+/gate/source/sphere22mm/gps/pos/halfz         0.5 mm
+/gate/source/sphere22mm/setActivity           60821 Bq
+/gate/source/sphere22mm/gps/particle          gamma
+/gate/source/sphere22mm/gps/ene/type          Mono
+/gate/source/sphere22mm/gps/ene/mono          0.440 MeV
+/gate/source/sphere22mm/gps/ang/type          iso
+/gate/source/sphere22mm/gps/pos/confine       sphere22in
+
+# 28 mm Sphere
+/gate/source/addSource sphere28mm             gps
+/gate/source/sphere28mm/gps/pos/centre        2.86 -4.95367 0.0 cm
+/gate/source/sphere28mm/gps/pos/type          Volume
+/gate/source/sphere28mm/gps/pos/shape         Cylinder
+/gate/source/sphere28mm/gps/pos/radius        1.4 cm
+/gate/source/sphere28mm/gps/pos/halfz         0.5 mm
+/gate/source/sphere28mm/setActivity           98520 Bq
+/gate/source/sphere28mm/gps/particle          gamma
+/gate/source/sphere28mm/gps/ene/type          Mono
+/gate/source/sphere28mm/gps/ene/mono          0.440 MeV
+/gate/source/sphere28mm/gps/ang/type          iso
+/gate/source/sphere28mm/gps/pos/confine       sphere28in
+
+# 37 mm Sphere
+/gate/source/addSource sphere37mm             gps
+/gate/source/sphere37mm/gps/pos/centre        5.72 0. 0.0 cm
+/gate/source/sphere37mm/gps/pos/type          Volume
+/gate/source/sphere37mm/gps/pos/shape         Cylinder
+/gate/source/sphere37mm/gps/pos/radius        1.85 cm
+/gate/source/sphere37mm/gps/pos/halfz         0.5 mm
+/gate/source/sphere37mm/setActivity           172034 Bq
+/gate/source/sphere37mm/gps/particle          gamma
+/gate/source/sphere37mm/gps/ene/type          Mono
+/gate/source/sphere37mm/gps/ene/mono          0.440 MeV
+/gate/source/sphere37mm/gps/ang/type          iso
+/gate/source/sphere37mm/gps/pos/confine       sphere37in
+
+/gate/source/list

@@ -9,14 +9,18 @@
 #=====================================================
 # GEOMETRY
 #=====================================================
-/control/execute C4_12heads.mac
+#/control/execute C4_12heads.mac
+#/control/execute C4_10heads.mac
+/control/execute C4_10heads_nocol.mac
 #/control/execute C4_1head.mac
+#/control/execute C4_1head_nocol.mac
 
 #=====================================================
 # PHANTOMS
 #=====================================================
 #/control/execute Derenzo_hotrods_benchmark_slice.mac
 #/control/execute NEMA_IQ_2001.mac
+#/control/execute NEMA_IQ_2001_slice.mac
 
 #=====================================================
 # PHYSICS 
@@ -65,30 +69,35 @@
 #=====================================================
 # VISUALISATION
 #=====================================================
-/vis/disable
+#/vis/disable
 #/control/execute Vis_OGL.mac
 #/control/execute Vis_raytracer.mac
-#/control/execute Vis_heprep.mac
+/control/execute Vis_heprep.mac
 #/control/execute Visualization_traj.mac
 
 #=====================================================
 # SOURCE
 #=====================================================
 #/control/execute GeneratePointSource.mac
-/control/execute GenerateSphericalSource.mac
+/control/execute GenerateTwoPointsSource.mac
+#/control/execute GenerateSphericalSource.mac
 #/control/execute Generate511s.mac
 #/control/execute GenerateDerenzoHotrod511s.mac
-#/control/execute GenerateNEMAIQ.mac
+#/control/execute GenerateNEMAIQSliceSingleGamma.mac
 /gate/source/list
 
 #=====================================================
 # DIGITIZE
 #=====================================================
 /gate/digitizer/Singles/insert adder
-/gate/digitizer/Singles/insert readout
+/gate/digitizer/Singles/adder/positionPolicy energyWeightedCentroid
+#/gate/digitizer/Singles/adder/positionPolicy takeEnergyWinner
+
+#/gate/digitizer/Singles/insert readout
 #/gate/digitizer/Singles/readout/setPolicy TakeEnergyCentroid
-/gate/digitizer/Singles/readout/setPolicy TakeEnergyWinner
-/gate/digitizer/Singles/readout/setDepth 1
+#/gate/digitizer/Singles/readout/setPolicy TakeEnergyWinner
+#/gate/digitizer/Singles/readout/setDepth 1 #1->Crystal, 2->Pixel
+
 #/gate/digitizer/Coincidences/setWindow 10. ns
 
 
@@ -129,8 +138,8 @@
 # DEFINE OUTPUT
 #=====================================================
 /gate/output/root/enable
-#/gate/output/root/setFileName {outfilename}   #Cmd prompt parameter
-/gate/output/root/setFileName SPECT
+/gate/output/root/setFileName {outfilename}   #Cmd prompt parameter
+#/gate/output/root/setFileName SPECT
 
 /gate/output/root/setRootHitFlag            0
 /gate/output/root/setRootSinglesFlag        1

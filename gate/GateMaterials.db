@@ -81,6 +81,15 @@ Lutetium: d=9.84 g/cm3 ; n=1
 Tungsten: d=19.3 g/cm3 ; n=1 ; state=solid
         +el: name=auto       ; n=1
 
+Tungsten_epoxy: d=15.0 g/cm3 ; n=1 ; state=solid
+        +el: name=Tungsten   ; n=5
+        +el: name=Carbon     ; n=1
+        +el: name=Hydrogen   ; n=1
+        +el: name=Oxygen     ; n=1
+
+Tungsten_epoxy2: d=15.0 g/cm3 ; n=1 ; state=solid
+        +el: name=Tungsten   ; n=1
+
 Lead: d=11.4 g/cm3 ; n=1 ; state=solid
         +el: name=auto       ; n=1
 
