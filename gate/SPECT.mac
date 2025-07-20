@@ -10,8 +10,8 @@
 # GEOMETRY
 #=====================================================
 #/control/execute C4_12heads.mac
-#/control/execute C4_10heads.mac
-/control/execute C4_10heads_nocol.mac
+/control/execute C4_10heads.mac
+#/control/execute C4_10heads_nocol.mac
 #/control/execute C4_1head.mac
 #/control/execute C4_1head_nocol.mac
 
@@ -69,10 +69,10 @@
 #=====================================================
 # VISUALISATION
 #=====================================================
-#/vis/disable
+/vis/disable
 #/control/execute Vis_OGL.mac
 #/control/execute Vis_raytracer.mac
-/control/execute Vis_heprep.mac
+#/control/execute Vis_heprep.mac
 #/control/execute Visualization_traj.mac
 
 #=====================================================
